@@ -7,6 +7,9 @@ Run application.java from com.capg.accservices package
 This is a spring boot application
 It will run embedded tomcat container.
 
+To run
+java –jar accountservices-1.0.jar
+
 To test, start postman app in chrome
 http://localhost:90//accservices/556678/accounts
 
