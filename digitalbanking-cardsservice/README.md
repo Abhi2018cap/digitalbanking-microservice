@@ -1,6 +1,8 @@
 # digitalbanking Card Microservice
 Digital Banking Training
 
+We are in the process of dockerizing this.
+
 mvn clean install
 Run App.java from com.capg.cardservices package
 
