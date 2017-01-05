@@ -1,0 +1,17 @@
+postgres:
+  restart: always
+  image: postgres:latest
+  environment:
+    POSTGRES_PASSWORD: capg123
+    POSTGRES_USER: postgres
+    volumes_from:
+     -data
+    ports:
+      -"5432:5432"
+    
+accountservices:
+  image: dbt/accountservices
+  links:
+    - postgres:postgres
+  ports:
+    - 8080:8080
