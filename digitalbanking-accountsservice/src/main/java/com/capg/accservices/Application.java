@@ -10,18 +10,17 @@ import org.apache.log4j.Logger;
 
 @SpringBootApplication
 @ComponentScan("com.capg.accservices")
-public class Application   {
-	
-    private static Logger log = Logger.getLogger(Application.class);
+/**
+ * This is the main spring boot application 
+ * @author mahenata
+ *
+ */
+public class Application {
 
+	private static Logger log = Logger.getLogger(Application.class);
 
-    public static void main(final String[] args) throws Throwable {
-    	
-        log.info("Logger enabled: Entering main \n\n");
-
-        SpringApplication.run(Application.class, args);
-    }
-
-    /*s*/
-   
+	public static void main(final String[] args) throws Throwable {
+		log.info("Logger enabled: Entering main \n\n");
+		SpringApplication.run(Application.class, args);
+	}
 }
