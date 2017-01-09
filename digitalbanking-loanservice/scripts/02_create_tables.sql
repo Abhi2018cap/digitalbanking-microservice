@@ -53,6 +53,8 @@ CREATE TABLE public.loan
    loan_type character varying(3) COLLATE pg_catalog."default" NOT NULL,
    customer_id integer NOT NULL,
    loan_id integer NOT NULL,
+   duration integer NOT NULL,
+   rate_of_interest double precision NOT NULL,
    PRIMARY KEY (loan_account_id),
    CONSTRAINT branch_branchid_fkey FOREIGN KEY (branch_id)
    REFERENCES public.branch (branch_id) MATCH SIMPLE,
