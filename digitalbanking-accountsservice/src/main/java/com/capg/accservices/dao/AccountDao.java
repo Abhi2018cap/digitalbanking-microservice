@@ -14,9 +14,7 @@ import com.capg.accservices.model.Account;
 
 @Repository
 @Transactional
-public interface AccountRepository extends JpaRepository<Account,Long> {
-  
-  
+public interface AccountDao extends JpaRepository<Account,Long> {
 	List<Account> findByCustomerId(int customerId);
 	Account findByAccountNo(int accountNo);
 }
