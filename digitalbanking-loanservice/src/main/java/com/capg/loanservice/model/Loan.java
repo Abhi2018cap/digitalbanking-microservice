@@ -41,6 +41,13 @@ public class Loan implements Serializable{
 	@JoinColumn(name="customer_id")
 	private Customer customer;
 
+	@Column(name="duration")
+	private double duration;
+	
+	@Column(name="rate_of_interest")
+	private String rateOfInterest;
+	
+	
 	public int getLoanAccountId() {
 		return loanAccountId;
 	}
@@ -80,6 +87,18 @@ public class Loan implements Serializable{
 	}
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
+	}
+	public double getDuration() {
+		return duration;
+	}
+	public void setDuration(double duration) {
+		this.duration = duration;
+	}
+	public String getRateOfInterest() {
+		return rateOfInterest;
+	}
+	public void setRateOfInterest(String rateOfInterest) {
+		this.rateOfInterest = rateOfInterest;
 	}
 	
 }
