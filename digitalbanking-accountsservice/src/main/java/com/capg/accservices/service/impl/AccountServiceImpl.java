@@ -21,7 +21,6 @@ public class AccountServiceImpl {
 	List<Account> accountList=null;
 	public List getAccountList(Customer customer)
 	{
-		
 		accountList= accountDao.findByCustomerId(customer.getCustomerId());
 		int size=accountList.size();
 		System.out.println("size of the account"+size);

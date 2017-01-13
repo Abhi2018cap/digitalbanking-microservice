@@ -19,7 +19,7 @@ import com.capg.accservices.model.Account;
 @ComponentScan("com.capg.accservices")
 
 @EnableAutoConfiguration
-public class AcccountServicesController {
+public class AccountServicesController {
 
 	@Autowired
 	private AccountRepository accountDao;
@@ -28,18 +28,12 @@ public class AcccountServicesController {
 	@RequestMapping(value="/accservices/{customerId}/accounts",method = RequestMethod.GET)
     @ResponseBody
        public List<Account> getAccounts(@PathVariable  int customerId) {
-       
-    	//Customer customer=new Customer();
-    	//customer.setCustomerId(customerId);
     	return accountDao.findByCustomerId(customerId);
     }
 	
 	@RequestMapping(value="/accservices/{accountNo}/account",method = RequestMethod.GET)
     @ResponseBody
        public Account getAccount(@PathVariable  int accountNo) {
-       
-    	//Customer customer=new Customer();
-    	//customer.setCustomerId(customerId);
     	return accountDao.findByAccountNo(accountNo);
     }
 	
