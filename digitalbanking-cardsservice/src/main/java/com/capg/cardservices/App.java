@@ -21,7 +21,6 @@ public class App extends Application<CardConfiguration> {
  
     
     private final HibernateBundle<CardConfiguration> hibernate = new HibernateBundle<CardConfiguration>(Card.class) {
-        @Override
         public DataSourceFactory getDataSourceFactory(CardConfiguration configuration) {
             return configuration.getDataSourceFactory();
         }
