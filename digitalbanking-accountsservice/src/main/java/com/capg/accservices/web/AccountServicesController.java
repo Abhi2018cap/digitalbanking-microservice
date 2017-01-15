@@ -8,11 +8,10 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.capg.accservices.dao.AccountRepository;
 import com.capg.accservices.model.Account;
+import com.capg.accservices.service.AccountService;
 
 @RestController
 
@@ -22,19 +21,28 @@ import com.capg.accservices.model.Account;
 public class AccountServicesController {
 
 	@Autowired
-	private AccountRepository accountDao;
-	
+	private AccountService accountService;
     
 	@RequestMapping(value="/accservices/{customerId}/accounts",method = RequestMethod.GET)
-    @ResponseBody
-       public List<Account> getAccounts(@PathVariable  int customerId) {
-    	return accountDao.findByCustomerId(customerId);
+    public List<Account> getAccounts(@PathVariable  int customerId) {
+		return accountService.getCustomerAccounts(customerId);
     }
 	
 	@RequestMapping(value="/accservices/{accountNo}/account",method = RequestMethod.GET)
-    @ResponseBody
-       public Account getAccount(@PathVariable  int accountNo) {
-    	return accountDao.findByAccountNo(accountNo);
+    public Account getAccountById(@PathVariable  int accountNo) {
+		return accountService.getAccountDetailsById(accountNo);
+    }
+	
+	@RequestMapping(value="/accservices/{accountNo}/{amount}/accountdeposit",method = RequestMethod.POST)
+    public String depositeAmount(@PathVariable  int accountNo, @PathVariable  int amount) {
+		accountService.depositeAmount(accountNo, amount);
+		return "Sucess";
+    }
+	
+	@RequestMapping(value="/accservices/{accountNo}/{amount}/accountwithdraw",method = RequestMethod.POST)
+    public String withdrawAmount(@PathVariable  int accountNo, @PathVariable  int amount) {
+		accountService.withdrawAmount(accountNo, amount);
+		return "Sucess";
     }
 	
 }
