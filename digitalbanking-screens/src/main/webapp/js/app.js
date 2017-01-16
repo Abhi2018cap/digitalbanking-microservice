@@ -4,5 +4,5 @@
 var digitalbankingApp = angular.module(
 		'digitalbankingApp',
 		[ 'routes','ngGrid', 				
-				'digitalbankingServices', 'digitalbankingControllers', 'digitalbankingDirectives', 'ngInputModified', 'ngProgress'
+				'digitalbankingServices', 'digitalbankingControllers', 'digitalbankingDirectives', 'ngInputModified', 'ngProgress','ngStorage'
 				]);

@@ -42,7 +42,7 @@
 <link rel="stylesheet" href="css/annotator.min.css">
 <link rel="stylesheet" href="css/datetimepicker.css">
 <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
-
+<link rel="stylesheet" href="css/common.css">
 <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 <!--[if lt IE 9]>
@@ -56,7 +56,7 @@
 <body>
 
 	<!-- Header -->
-	<div ng-include src="headerTemplate"></div>
+	<div ng-include="'includes/header.html'"></div>
 	<!-- End of Header -->
 	<!-- Content Section -->
 	<div>
@@ -67,6 +67,7 @@
 	<!-- End of Content Section -->
 	<!-- Footer -->
 	<div ng-include="'includes/footer.html'"></div>
+	
 	<!-- End of Footer -->
 	<!-- Angular -->
 	<script src="jslib/jquery-1.11.0.min.js"></script>

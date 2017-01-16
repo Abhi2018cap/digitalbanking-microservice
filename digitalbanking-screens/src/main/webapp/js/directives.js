@@ -6,4 +6,3 @@ function( $compileProvider )
 $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|file|blob|cdvfile):|data:image\//);
 }
 ]);
-
