@@ -11,14 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.loanservice.model.Customer;
 import com.capg.loanservice.model.Loan;
-import com.capg.loanservice.service.impl.LoanServiceImpl;
+import com.capg.loanservice.service.LoanService;
 
 @RestController
 @ComponentScan("com.capg.loanservice")
 public class LoanServicesController {
 
 	@Autowired
-	private LoanServiceImpl loanService;
+	private LoanService loanService;
 	
 	@RequestMapping(value="/loanservice/{customerId}/loans",method = RequestMethod.GET)
     public List<Loan> getAllLoansofCustomer(@PathVariable  int customerId) {
