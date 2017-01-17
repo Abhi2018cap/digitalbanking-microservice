@@ -1,4 +1,5 @@
-INSERT INTO customer (customer_id, customer_name, password, last_login, mobile_no, email_id) VALUES
+ 
+  INSERT INTO customer (customer_id, customer_name, password, last_login, mobile_no, email_id) VALUES
 (556677,	'Raja',	'capg123',	NULL,	NULL,	NULL);
 
 INSERT INTO customer (customer_id, customer_name, password, last_login, mobile_no, email_id) VALUES

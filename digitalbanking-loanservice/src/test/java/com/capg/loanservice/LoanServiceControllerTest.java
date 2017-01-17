@@ -26,25 +26,11 @@ import com.capg.loanservice.web.LoanServicesController;
 @WebMvcTest(LoanServicesController.class)
 public class LoanServiceControllerTest {
 	
-//	@InjectMocks
-//	private LoanServicesController lcontroller;
 	@Autowired
 	private MockMvc mvc;
 
-//	@Mock
-//	LoanDao loanDAO;
-	
 	@MockBean	
 	private LoanService loanService;
-
-//	@Before
-//	public void setUp() {
-//		MockitoAnnotations.initMocks(this);
-//		loanService = mock(LoanService.class);
-//		mvc = MockMvcBuilders
-//				.standaloneSetup(lcontroller)
-//				.build();
-//	}
 	
 	@Test
 	public void getAllLoansofCustomer() throws Exception {
