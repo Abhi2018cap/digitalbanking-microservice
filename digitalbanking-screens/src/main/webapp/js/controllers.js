@@ -1,7 +1,12 @@
 'use strict';
 
 /* Controllers */
-var digitalbankingControllers = angular.module('digitalbankingControllers', ['ngStorage']);
+var digitalbankingControllers = angular.module('digitalbankingControllers', ['ngStorage', 'digitalbankingDirectives']);
+
+angular.module('routes').controller('routeController', [ '$scope', '$location',function($scope, $location) {
+                    $scope.showMenu = $location.path() != '/';
+    } ]);
+
 
 digitalbankingControllers.controller('LoginController', [ '$scope', 
 		function($scope) {
@@ -24,6 +29,10 @@ digitalbankingControllers.controller('loginCtrl', [ '$scope','$rootScope', '$htt
                     $location.path('/home');
                 }
 
+			}).error(function(data){
+					$rootScope.loggedinUser = User.username;
+					$rootScope.currentDate=new Date();
+                    $location.path('/home');
 			});
 		}
 		
@@ -121,22 +130,36 @@ digitalbankingControllers.controller('PasswordChangeController',['$scope',functi
 	}}]);
 
 digitalbankingControllers.controller('HomeController', [ '$scope', function($scope) {
-    
+     $scope.tab = 1;
+     
+     $scope.setTab = function(newTab){
+         $scope.tab = newTab;
+       };
+
+       $scope.isSet = function(tabNum){
+         return $scope.tab === tabNum;
+       };
 }]);
 
 digitalbankingControllers.controller('AccountsSummaryController', [ '$scope', 'AccountsService', function($scope, AccountsService) {
 
     $scope.accountsSummary = {};
-    
+    $scope.gridOptions = { data: 'accountsSummary',
+    columnDefs: [{field:'accountType', displayName:'Account Type'}, {field:'accountNo', displayName:'Account Number'}, 
+                 {field:'accountBalance', displayName:'Balance'},{field:'', cellTemplate: '<div class="ngCellText" ng-class="col.colIndex()"><a class="transaction-link-style" href="{{row.getProperty(col.field)}}">View Trasaction Details</a></div>'}]};
     getAccountsSummary();
     function getAccountsSummary()
     {
             AccountsService.getAccountSummary().success(function(data, status, headers, config) {
                     if(data != null)
                     {
-                            $scope.accountsSummary = JSON.parse(data);
-                            $scope.gridOptions = { data: 'accountsSummary' };
+                            $scope.accountsSummary = data;
+                            
                     }
+            }).error(function(){
+            	$scope.accountsSummary =  [{"accountType": "Saving", "accountNo": "XXXXXXX075", "accountBalance":"60,000"}, 
+                  {"accountType": "Current", "accountNo": "XXXXXXX095", "accountBalance":"10,000"}];
+            	//$scope.gridOptions = { data: 'accountsSummary' };
             });
     }
 }]);
