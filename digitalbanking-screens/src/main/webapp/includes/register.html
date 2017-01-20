@@ -1,111 +1,146 @@
 <div class="container">
 	<div class="row">
-		<form class="register-box">
+		<form class="register-box form-horizontal" name="registrationForm" novalidate>
 			<div class="col-xs-12 register-menu-style">
 				<ul class="nav nav-tabs nav-justified">
-				<li class="active"><a href="#acc_info"></a><p><span class="glyphicon glyphicon-plus-sign"></span>  Enter<br>Account Information</p></li>
-				<li class="active"><a href="#auth_info"></a><p><span class="glyphicon glyphicons-shield"></span> Authenticate<br>Account Information</p></li>
-				<li class="active"><a href="#userId"></a><p><span class="glyphicon glyphicon-user"></span> Choose<br>User ID</p></li>
-				<li class="active"><a href="#ipin"></a><p><span class="glyphicon glyphicon-briefcase"></span> Choose<br>IPIN</p></li>
-				<li class="active"><a href="#/login"></a><p><span class="glyphicon glyphicon-log-in"></span> Login to<br>Digitalbank Online</p></li>
+				<li class="register-tab-li" ng-class="{'register-tab-active' : acc_infotab}" tabIndex=0><p><span class="glyphicon glyphicon-plus-sign"></span>  Enter<br>Account Information</p></li>
+				<li class="register-tab-li" ng-class="{'register-tab-active' : auth_infotab}"><p><span class="	glyphicon glyphicon-lock"></span> Authenticate<br>Account Information</p></li>
+				<li class="register-tab-li" ng-class="{'register-tab-active' : userIdtab}" tabIndex=2><p><span class="glyphicon glyphicon-user" tabIndex=2></span> Choose<br>User ID</p></li>
+				<li class="register-tab-li" ng-class="{'register-tab-active' : passwordtab}" tabIndex=3><p><span class="glyphicon glyphicon-briefcase" tabIndex=3></span> Choose<br>Password</p></li>
 			</ul>
 			
 			<div class="tab-content">
 			<!-- first tab form -->
-				<div class="tab-pane active tab-style" id="acc_info" ng-show="acc_info">
+				<div class="tab-pane active tab-style" id="acc_infotab" ng-show="acc_infotab">
 					<div class="form-group">
-						<label class="control-label"> Account Information</label>
+						<label class="control-label label-font"> Account Information</label>
 						<div class="dropdown">
 						<select class="btn btn-default dropdown-toggle" ng-model="accountInfo" ng-change="showCredit()">
 							<option value="">Select your Account type</option>
 							<option value="credit">Credit Card</option>
-							<option value="banking">Banking/Suvidha</option>
-							<option value="PL">Personal Loan</option>
-							<option value="accountRep">Account Representatives</option>
-							<option value="mortgages">Mortgages</option>
+							<option value="banking">Banking</option>
 						</select>
 						</div>
 						<!-- form with in the first form -->
-						<div class=" col-xs-6 form-horizontal" style="padding:20px;" ng-show="credit">
+						<div class="col-sm-6" ng-show="credit">
 							<div class="form-group">
-									<label>Enter your 16 digit Credit Card Number:</label>
-									<div class="form-inline">
-										<div class="col-xs-3 form-group">
-											<input type="text" class="text-box-size" maxlength="4">
-										</div>
-										<div class="col-xs-3 form-group">
-											<input type="text" class="text-box-size" maxlength="4">
-										</div>
-										<div class="col-xs-3 form-group">
-											<input type="text" class="text-box-size" maxlength="4">
-										</div>
-										<div class="col-xs-3 form-group">
-											<input type="text" class="text-box-size" maxlength="4">
-										</div>
+									<label class="control-label label-font" ng-model="creditCardNum">Enter your 16 digit Credit Card Number</label>
+									<div>
+									<input type="text" class="text-box-size" limit-to="4">
+									<input type="text" class="text-box-size" limit-to="4">
+									<input type="text" class="text-box-size" limit-to="4">
+									<input type="text" class="text-box-size" limit-to="4">
+									</div>
+								</div>
+								<div class="form-group" ng-class="{'has-error':!registrationForm.cvvNum.$valid}">
+									<label class="control-label label-font">CVV Number</label><br>
+									<input type="number" name="cvvNum" ng-model="cvvNum" class="text-box-size" limit-to="3" ng-required="">
+									<p ng-show="registrationForm.cvvNum.$pristine"  class="help-block">CVV number is required.</p>			
+								</div>
+								<div class="form-group">
+									<label class="control-label label-font">Card Expiration Date</label><br>
+									<input type="date" placeholder="dd/MM/yyyy" ng-model="CreditExpDate">
+								</div>
+								<div class="form-group">
+									<label class="control-label">Personal Information</label>
+								</div>
+								<div class="form-group">
+									<label class="control-label label-font">Date of Birth</label><br>
+									<input type="date" placeholder="dd/MM/yyyy" ng-model="dob">
+								</div>
+								<div class="form-group">
+									<label class="control-label label-font">Mailing address pincode</label><br>
+									<input type="number" name="pincode" ng-model="pincode" ng-minlength="6" limit-to="6" ng-required>
+									<p ng-show="registrationForm.pincode.$error.minlength" class="help-block">Pincode should be of 6 digit length.</p>
+								</div>
+								<div class="form-group">
+									<input type="checkbox" ng-model="isSelected" ng-required> I Agree, that the information provided is correct.
+								</div>
+								<div class="form-group">
+								<button class="btn btn-primary" ng-disabled="!isSelected" ng-click="go(1)">Proceed <span class="glyphicon glyphicon-chevron-right"></span></button>
+								</div>
+						</div>
+						<!-- Second form -->
+						<div class="col-sm-6" ng-show="banking">
+							<div class="form-group">
+									<label class="control-label label-font" ng-model="debitCardNum">Enter your 16 digit Debit Card Number</label>
+									<div>
+									<input type="text" class="text-box-size" limit-to="4">
+									<input type="text" class="text-box-size" limit-to="4">
+									<input type="text" class="text-box-size" limit-to="4">
+									<input type="text" class="text-box-size" limit-to="4">
 									</div>
 								</div>
 								<div class="form-group">
-									<label>CVV Number:</label>
-									<input type="text" maxlength="3">
+									<label class="control-label label-font">CVV Number</label><br>
+									<input type="number" name="cvvNum" ng-model="cvvNum" class="text-box-size" limit-to="3" ng-minlength="3" ng-required>
+									<p ng-show="registrationForm.cvvNum.$pristine"  class="help-block">CVV number is required.</p>									
 								</div>
 								<div class="form-group">
-									<label>Card Expiration Date:</label>
-									<input type="date" placeholder="dd/MM/yyyy">
-								</div>
-								<p style="color: #66a3ff">Personal Information</p><br>
-								<div class="form-group">
-									<label>Date of Birth:</label>
-									<input type="date" placeholder="dd/MM/yyyy">
+									<label class="control-label label-font">Card Expiration Date</label><br>
+									<input type="date" placeholder="dd/MM/yyyy" ng-model="debitExpDate">
 								</div>
 								<div class="form-group">
-									<label>Mailing address pincode</label>
-									<input type="text" maxlength="6">
+									<label class="control-label">Personal Information</label>
 								</div>
 								<div class="form-group">
-								<div class="panel-box register-panel-box-size">
-									<div class="panel-body"><p>Terms and Conditions</p></div>
-								</div>
-								</div>
-								<div class="form-group">
-									<input type="checkbox"> I Agree to the terms and conditions
+									<label class="control-label label-font">Date of Birth</label><br>
+									<input type="date" placeholder="dd/MM/yyyy" ng-model="dob">
 								</div>
 								<div class="form-group">
-								<button class="btn btn-primary" ng-click="go(1)">Proceed <span class="glyphicon glyphicon-chevron-right"></span></button>
+									<input type="checkbox" ng-model="isSelected" ng-required> I Agree, that the information provided is correct.
+								</div>
+								<div class="form-group">
+								<button class="btn btn-primary" ng-disabled="!isSelected" ng-click="go(1)">Proceed <span class="glyphicon glyphicon-chevron-right"></span></button>
 								</div>
 						</div>
 					</div>
 				</div>
-				<div class="tab-pane active tab-style" id="auth_info" index="1" ng-show="auth_info">
-					<div class="form-group auth-info-style">
-						<label>Enter One Time Password (OTP)</label><br>
-						<input type=text maxlength="6"><br><br>
-						<div class="form-group">
-							<input type="button" class="btn btn-primary" value="Submit" ng-click="otpVerify()">
-							<input type="button" class="btn btn-primary" value="Resend" ng-click="resendOtp()">
-						</div>
-					</div>
-					<div class="form-group pull-right">
-						<button class="btn btn-primary" ng-click="go(2)">Proceed <span class="glyphicon glyphicon-chevron-right"></span></button>
-					</div>
-				</div>
-				<div class="tab-pane active tab-style" id="auth_info" index="2" ng-show="userId">
+				<div class="tab-pane active tab-style" id="auth_infotab" index="1" ng-show="auth_infotab">
 					<div class="form-group">
-						userId Form
+						<label class="control-label label-font">Enter One Time Password (OTP)</label><br>
+						<input type="text" name="otp" ng-model="otp" limit-to="6" ng-required>
 					</div>
-					<div class="form-group pull-right">
+					<div class="form-group">
+						<input type="button" ng-disabled="registrationForm.otp.$pristine" class="btn btn-primary" value="Submit" ng-click="go(2)">
+						<input type="button" class="btn btn-primary" value="Resend" ng-click="resendOtp()">
+					</div>
+				</div>
+				<div class="tab-pane active tab-style" id="userIdtab" index="2" ng-show="userIdtab">
+					<div class="form-group">
+						<label class="control-label label-font">Choose UserId</label><br>
+						<input type="text" name="userId" ng-model="userId" ng-minlength="3" ng-maxlength="8" ng-required="">
+						<p ng-show="registrationForm.userId.$error.required"></p>
+						<p ng-show="registrationForm.userId.$error.minlength" class="help-block">Username is too short.</p>
+            			<p ng-show="registrationForm.userId.$error.maxlength" class="help-block">Username is too long.</p>
+					</div>
+					<div class="form-group">
+						<input type="button" class="btn btn-primary" value="Submit" ng-click="go(3)">
+					</div>
+					<!-- <div class="form-group pull-right">
 						<button class="btn btn-primary" ng-click="go(3)">Proceed <span class="glyphicon glyphicon-chevron-right"></span></button>
-					</div>
+					</div> -->
+				
 				</div>
-				<div class="tab-pane active tab-style" id="auth_info" index="3" ng-show="ipin">
+				<div class="tab-pane active tab-style" id="passwordtab" index="3" ng-show="passwordtab">
 					<div class="form-group">
-						Ipin form
+						<label class="control-label label-font">Choose Password</label><br>
+						<input type="password" name="userPassword" ng-model="userPassword" ng-minlength="8" ng-maxlength="20" ng-change="validatePassword(password)">
+						<p ng-show="isValidPassword" class="help-block">Password should be alphanumeric with atleast one special character</p>
+						<p ng-show="registrationForm.userPassword.$error.minlength" class="help-block">Passwords must be between 8 and 20 characters.</p>
+						<p ng-show="registrationForm.userPassword.$error.maxlength" class="help-block">Passwords is too long. </p>
 					</div>
-					<div class="form-group pull-right">
-						<a href="#/" class="btn btn-primary">Proceed to Login Page <span class="glyphicon glyphicon-chevron-right"></span></a>
+					<div class="form-group">
+						<label class="control-label label-font">Confirm Password</label><br>
+						<input type="password" name="confirmPassword" ng-model="confirmPassword" ng-required>
+						<p ng-show="isMatch" class="help-block">Confirm password should match with password.</p>
 					</div>
-				</div>
+					<div class="form-group">
+						<button class="btn btn-primary" ng-click="comparePasswords()">Proceed to Login Page <span class="glyphicon glyphicon-chevron-right"></span></button>
+					</div>
 				
 			</div>	
+			</div>
 			</div>
 		</form>
 	</div>

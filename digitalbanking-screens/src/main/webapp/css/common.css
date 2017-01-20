@@ -174,7 +174,7 @@ li.dropdown:hover > .dropdown-menu {
     margin:auto;
 }
 .tab-style{
-	padding:30px;
+	padding:40px;
 }
 .box {
     padding: 0 5px 0 5px;
@@ -232,4 +232,34 @@ li.dropdown:hover > .dropdown-menu {
 .summary-sub-row:hover
 {
 	background: rgb(231,231,231);
+}
+.transaction-details-style
+{
+	color:black;
+	margin-top:10px;
+}
+.label-font{
+	font-weight:normal;
+}
+.register-tab-li{
+	border-right: 2px solid #ccc;
+	border-left: 1px solid #ccc;
+    padding-left: 13px;
+    border-bottom: 2px solid #ccc;
+}
+.register-tab-li:first-child{
+	border-left:0px;
+	}
+.register-tab-li:last-child{
+	border-right:0px;
+	}
+.register-tab-active{
+	border-bottom:0px !important;
+    color:#3385ff;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+}
+.register-form-validation{
+	font-size:10;
+	color: #a6a6a6;
 }

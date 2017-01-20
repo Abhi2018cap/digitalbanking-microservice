@@ -18,17 +18,17 @@
 				</div>
 			</div>
 			<div class="col-xs-10">
-				<div ng-show="isSet(1)">
+				<div ng-if="isSet(1)">
 					<account-summary-directive></account-summary-directive>
 				</div>
-				<div ng-show="isSet(2)">
-					Loan Summary
+				<div ng-if="isSet(2)">
+					<loan-summary-directive></loan-summary-directive>
 				</div>
-				<div ng-show="isSet(3)">
-					Card Summary
+				<div ng-if="isSet(3)">
+					<card-summary-directive></card-summary-directive>
 				</div>
-				<div ng-show="isSet(4)">
-					Investment Summary
+				<div ng-if="isSet(4)">
+					<investment-summary-directive></investment-summary-directive>
 				</div>
 			</div>
 		</div>
@@ -37,11 +37,15 @@
 <div class="row tile-row-margin">
 	<div class="col-md-6 box transaction-box">
 		<div class="dashboard-title dashboard-margin">Transactions</div>
-        <div class="inner">Hello</div>
+        <div class="inner">
+        	<transaction-summary-directive></transaction-summary-directive>
+        </div>
 	</div>
 	<div class="col-md-5 box pull-right">
 			<div class="dashboard-title dashboard-margin">Payee List</div>
-	        <div class="inner">Hello</div>
+	        <div class="inner">
+	        	<payee-list-directive></payee-list-directive>
+	        </div>
 	</div>
 </div>
 </div>

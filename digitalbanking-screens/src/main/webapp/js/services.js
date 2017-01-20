@@ -37,6 +37,36 @@ digitalbankingServices.factory('AccountsService',['$http','$location','$rootScop
     return service;
 }]);
 
+digitalbankingServices.factory('LoanService',['$http','$location','$rootScope', '$q', function($http, $location, $rootScope) {
+
+    var service = {};
+    service.getLoanSummary = function() {  
+    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    };
+
+    return service;
+}]);
+
+digitalbankingServices.factory('TransactionService',['$http','$location','$rootScope', '$q', function($http, $location, $rootScope) {
+
+    var service = {};
+    service.getTransactionDetails = function() {  
+    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    };
+
+    return service;
+}]);
+
+digitalbankingServices.factory('PayeeService',['$http','$location','$rootScope', '$q', function($http, $location, $rootScope) {
+
+    var service = {};
+    service.getPayeeList = function() {  
+    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    };
+
+    return service;
+}]);
+
 
 
 /*digitalbankingServices.factory('userService',['$rootScope',function($rootScope){
