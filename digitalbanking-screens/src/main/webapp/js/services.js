@@ -34,9 +34,79 @@ digitalbankingServices.factory('User', [function() {
 digitalbankingServices.factory('AccountsService',['$http','$location','$rootScope', '$q', function($http, $location, $rootScope) {
 
     var service = {};
-    service.getAccountSummary = function(username, password) {
-            return $http.get('/accservices/556677/accounts');
+    service.getAccountSummary = function() {  
+    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
     };
 
     return service;
 }]);
+
+digitalbankingServices.factory('LoanService',['$http','$location','$rootScope', '$q', function($http, $location, $rootScope) {
+
+    var service = {};
+    service.getLoanSummary = function() {  
+    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    };
+
+    return service;
+}]);
+
+digitalbankingServices.factory('TransactionService',['$http','$location','$rootScope', '$q', function($http, $location, $rootScope) {
+
+    var service = {};
+    service.getTransactionDetails = function() {  
+    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    };
+
+    return service;
+}]);
+
+digitalbankingServices.factory('PayeeService',['$http','$location','$rootScope', '$q', function($http, $location, $rootScope) {
+
+    var service = {};
+    service.getPayeeList = function() {  
+    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    };
+
+    return service;
+}]);
+
+
+
+/*digitalbankingServices.factory('userService',['$rootScope',function($rootScope){
+	var service={
+			model:{
+				firstName:'',
+				lastName:'',
+				username:'',
+				password:'',
+				confirmPassword:''
+			},
+			
+			SaveData:function(){
+				if(password==confirmPassword){
+					sessionStorage.userService=angular.toJson(service.model);
+				}
+				else
+					{
+						console.log('Password doesnot match');
+					}
+			},
+			RestoreData:function(){
+				service.model=angular.formJson(sessionStorage.userService);
+			},
+			ResetData:function(){
+				
+			}
+		}
+	
+		$rootScope.$on('savedata',service.SaveData);
+		$rootScope.$on('restoredata',service.RestoreData);
+		
+		return service;
+}]);
+
+digitalbankingServices.factory('passwordChangeService',['$rootScope',function($rootScope){
+	
+}]);
+*/

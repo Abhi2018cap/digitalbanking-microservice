@@ -23,11 +23,11 @@
 		redirectTo : '/'
 	});
 } ]);
-angular.module('routes').run(function ($rootScope,$location) {
-		       $rootScope.$on("$routeChangeSuccess", function (event, currentRoute, previousRoute) {
-			            $rootScope.showMenu = $location.path() != '/forgotPassword'
-										  && $location.path() != '/register' 
-										  && $location.path() != '/';
-			        });
-			    }); 
+	angular.module('routes').run(function ($rootScope,$location) {
+	       $rootScope.$on("$routeChangeSuccess", function (event, currentRoute, previousRoute) {
+		            $rootScope.showMenu = $location.path() != '/forgotPassword'
+									  && $location.path() != '/register' 
+									  && $location.path() != '/';
+		        });
+		    });  
 })();

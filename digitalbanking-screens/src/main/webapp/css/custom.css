@@ -341,7 +341,6 @@ p {
 /*callout type boxes*/
 .box {
 	min-height: 130px;
-	border-radius: 3px;
 	color: #fff;
 }
 
@@ -1266,13 +1265,6 @@ div>p:focus {
 .navbar-brand {
 	padding: 0;
 	margin: 0;
-}
-
-.navbar {
-	border-radius: 0;
-	margin-bottom: 0;
-	background: #289ccb;
-	padding: 0px;
 }
 
 .navbar-nav>li {

@@ -15,6 +15,10 @@ java –jar card.jar server configuration.yml
 To test, start postman app in chrome
 http://localhost:90/cardservices/556677/cards
 
-You have to create dbt database in mysql.
+You have to create db_cards database in postgres.
 Use sql scripts to create the tables and insert the data.
+
+## Running from Eclipse/STS
+Right click on App.java -> Run As -> Run Configurations -> In right panel -> Arguments -> type server configuration.yml
+Click on Run button.
 

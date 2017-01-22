@@ -55,6 +55,10 @@ CREATE TABLE public.loan
    loan_id integer NOT NULL,
    duration integer NOT NULL,
    rate_of_interest double precision NOT NULL,
+   loan_status character varying(10) COLLATE pg_catalog."default" NOT NULL,
+   loan_commencement_date timestamp,
+   loan_creation_date timestamp,
+   loan_emi_date timestamp,
    PRIMARY KEY (loan_account_id),
    CONSTRAINT branch_branchid_fkey FOREIGN KEY (branch_id)
    REFERENCES public.branch (branch_id) MATCH SIMPLE,

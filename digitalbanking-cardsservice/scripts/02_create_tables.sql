@@ -1,22 +1,34 @@
-DROP TABLE IF EXISTS card;
-CREATE TABLE card (
-  card_no bigint(20) NOT NULL,
-  cvv int(11) NOT NULL,
+--DROP TABLE public.card;    
+CREATE TABLE public.card
+(
+  card_no bigint NOT NULL,
+  cvv int NOT NULL,
   expiry_date date NOT NULL,
-  card_type varchar(10) NOT NULL,
-  customer_id int(11) DEFAULT NULL,
-  card_company varchar(10) NOT NULL,
-  credit_limit decimal(10,2) DEFAULT NULL,
-  card_status tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (card_no)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  card_type character varying(10) NOT NULL,
+  customer_id int DEFAULT NULL,
+  card_company character varying(10) NOT NULL,
+  credit_limit double precision DEFAULT NULL,
+  card_status numeric(1,0) DEFAULT NULL,
+  CONSTRAINT pk_cardno PRIMARY KEY (card_no)      
+) WITH (
+    OIDS = FALSE
+)TABLESPACE pg_default;
 
-DROP TABLE IF EXISTS customer;
-CREATE TABLE customer (
-  customer_id int(11) NOT NULL,
-  customer_name char(40) NOT NULL,
-  password char(20) DEFAULT NULL,
+ALTER TABLE public.card
+    OWNER to postgres;
+    
+    
+--DROP TABLE public.customer;
+CREATE TABLE public.customer (
+  customer_id int NOT NULL,
+  customer_name character varying(10) NOT NULL,
+  password character varying(20) DEFAULT NULL,
   last_login date DEFAULT NULL,
-  mobile_no char(15) DEFAULT NULL,
-  email_id varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  mobile_no character varying(15) DEFAULT NULL,
+  email_id character varying(50) NOT NULL      
+) WITH (
+    OIDS = FALSE
+)TABLESPACE pg_default;
+
+ALTER TABLE public.customer
+    OWNER to postgres;

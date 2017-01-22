@@ -1,6 +1,7 @@
 package com.capg.loanservice.model;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,9 +9,6 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-
-import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -47,6 +45,17 @@ public class Loan implements Serializable{
 	@Column(name="rate_of_interest")
 	private String rateOfInterest;
 	
+	@Column(name="loan_status")
+	private String loanStatus;
+	
+	@Column(name="loan_commencement_date")
+	private Timestamp loanCommencementDate;
+	
+	@Column(name="loan_creation_date")
+	private Timestamp loanCreationDate;
+	
+	@Column(name="loan_emi_date")
+	private Timestamp loanEmiDate;
 	
 	public int getLoanAccountId() {
 		return loanAccountId;
@@ -99,6 +108,30 @@ public class Loan implements Serializable{
 	}
 	public void setRateOfInterest(String rateOfInterest) {
 		this.rateOfInterest = rateOfInterest;
+	}
+	public String getLoanStatus() {
+		return loanStatus;
+	}
+	public void setLoanStatus(String loanStatus) {
+		this.loanStatus = loanStatus;
+	}
+	public Timestamp getLoanCommencementDate() {
+		return loanCommencementDate;
+	}
+	public void setLoanCommencementDate(Timestamp loanCommencementDate) {
+		this.loanCommencementDate = loanCommencementDate;
+	}
+	public Timestamp getLoanCreationDate() {
+		return loanCreationDate;
+	}
+	public void setLoanCreationDate(Timestamp loanCreationDate) {
+		this.loanCreationDate = loanCreationDate;
+	}
+	public Timestamp getLoanEmiDate() {
+		return loanEmiDate;
+	}
+	public void setLoanEmiDate(Timestamp loanEmiDate) {
+		this.loanEmiDate = loanEmiDate;
 	}
 	
 }
