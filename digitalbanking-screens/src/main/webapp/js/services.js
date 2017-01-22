@@ -13,7 +13,8 @@ digitalbankingServices.factory('LoginService',['$http','$location','$rootScope',
 			password : password
 		});
 		*/
-		return $http.get('/accservices/556678/accounts');
+		//return $http.get('/accservices/556678/accounts');
+		return $http.get('/cardservices/556677/cards');
 	};
 	service.isLoggedIn = function() {		
 		$http.defaults.headers.common.authToken = sessionStorage.authToken;
@@ -35,7 +36,7 @@ digitalbankingServices.factory('AccountsService',['$http','$location','$rootScop
 
     var service = {};
     service.getAccountSummary = function() {  
-    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    	 return $http.get('/accservices/556677/accounts');
     };
 
     return service;
@@ -45,7 +46,7 @@ digitalbankingServices.factory('LoanService',['$http','$location','$rootScope', 
 
     var service = {};
     service.getLoanSummary = function() {  
-    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    	 return $http.get('/loanservices/1/loans');
     };
 
     return service;
@@ -55,7 +56,7 @@ digitalbankingServices.factory('TransactionService',['$http','$location','$rootS
 
     var service = {};
     service.getTransactionDetails = function() {  
-    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    	 return $http.get('/txnservices/1000/accounts');
     };
 
     return service;
@@ -65,7 +66,7 @@ digitalbankingServices.factory('PayeeService',['$http','$location','$rootScope',
 
     var service = {};
     service.getPayeeList = function() {  
-    	 return $http.get('http://localhost:8090/accservices/556677/accounts');
+    	 return $http.get('/accservices/556677/accounts');
     };
 
     return service;
