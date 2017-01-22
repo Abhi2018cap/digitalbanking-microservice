@@ -6,10 +6,14 @@ var digitalbankingServices = angular.module('digitalbankingServices', [ 'ngResou
 digitalbankingServices.factory('LoginService',['$http','$location','$rootScope', function($http, $location, $rootScope) {
 	var service = {};
 	service.Login = function(username, password) {
-		return $http.post('webapi/security/authenticate', {
+		console.log("In services Login method");
+		/*
+		return $http.post('/authservice/authenticate', {
 			userName : username,
 			password : password
 		});
+		*/
+		return $http.get('/accservices/556678/accounts');
 	};
 	service.isLoggedIn = function() {		
 		$http.defaults.headers.common.authToken = sessionStorage.authToken;
