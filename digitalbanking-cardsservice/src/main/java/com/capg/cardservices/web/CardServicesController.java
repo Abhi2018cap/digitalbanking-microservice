@@ -33,6 +33,7 @@ public class CardServicesController {
 	@Path("/{customerId}/cards")   
 	@GET
 	@UnitOfWork
+	@CrossOrigin
 	public List<Card> getCardList(@PathParam("customerId")  int customerId) {
        
     	//Customer customer=new Customer();

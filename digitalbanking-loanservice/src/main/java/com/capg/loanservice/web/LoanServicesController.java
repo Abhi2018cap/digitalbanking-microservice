@@ -20,7 +20,7 @@ public class LoanServicesController {
 	@Autowired
 	private LoanService loanService;
 	
-	@RequestMapping(value="/loanservice/{customerId}/loans",method = RequestMethod.GET)
+	@RequestMapping(value="/loanservices/{customerId}/loans",method = RequestMethod.GET)
     public List<Loan> getAllLoansofCustomer(@PathVariable  int customerId) {
 	    Customer customer=new Customer();
 	    customer.setCustomerId(customerId);
@@ -28,9 +28,9 @@ public class LoanServicesController {
 	    return listLoan;
     }
 	
-	@RequestMapping(value="/loanservice/{loanAccountId}/loan",method = RequestMethod.GET)
-    public Loan getLoanById(@PathVariable  int loanAccountId) {
-	    Loan loan=loanService.getLoanById(loanAccountId);
+	@RequestMapping(value="/loanservices/{loanId}/loan",method = RequestMethod.GET)
+    public Loan getLoanById(@PathVariable  int loanId) {
+	    Loan loan=loanService.getLoanById(loanId);
 	    return loan;
     }
 }

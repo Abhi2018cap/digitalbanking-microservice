@@ -1,4 +1,4 @@
-create table loanmaster
+create table public.loanmaster
    (
     loan_id integer NOT NULL,
     loan_name character varying(20) COLLATE pg_catalog."default" NOT NULL,
