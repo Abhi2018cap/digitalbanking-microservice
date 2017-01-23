@@ -220,21 +220,9 @@ digitalbankingControllers
 											displayName : 'Loan Type'
 										},
 										{
-											field : 'loanAmount',
+											field : 'amount',
 											displayName : 'Loan Amount'
-										},
-										{
-											field : 'amountPaid',
-											displayName : 'Amount Paid'
-										},
-										{
-											field : 'loanBalance',
-											displayName : 'Loan Balance'
-										},
-										{
-											field : '',
-											cellTemplate : '<div class="ngCellText" ng-class="col.colIndex()"><a class="transaction-link-style" href="{{row.getProperty(col.field)}}">View Trasaction Details</a></div>'
-										} ]
+										}]
 							};
 							getLoanSummary();
 							function getLoanSummary() {
