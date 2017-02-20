@@ -1,0 +1,1 @@
+c:\windows\system32\drivers\etc\hosts file - change this and add the line.
